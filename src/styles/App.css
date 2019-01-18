@@ -1,0 +1,37 @@
+@import url('http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css');
+
+.App {
+    display: block;
+    min-height: 100vh;
+    padding: 1rem;
+    font-family: 'Reith Sans Regular';
+    -webkit-font-smoothing: antialiased;
+}
+
+.App > * + * {
+    margin-top: 1rem;
+}
+
+/* autoprefixer: off */
+@supports(display:grid) {
+    .App {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        grid-gap: 1rem;
+    }
+
+    .App > * + * {
+        margin-top: 0;
+    }
+}
+
+@media(max-width: 600px) {
+    .App {
+        display: block;
+    }
+
+    .App > * + * {
+        margin-top: 1rem;
+    }
+}

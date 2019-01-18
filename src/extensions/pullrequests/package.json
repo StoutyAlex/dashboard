@@ -1,0 +1,4 @@
+{
+  "name": "pullrequests",
+  "main": "./components/index.js"
+}

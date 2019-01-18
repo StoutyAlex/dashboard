@@ -1,0 +1,4 @@
+{
+  "name": "jenkins",
+  "main": "./components/index.js"
+}

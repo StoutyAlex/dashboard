@@ -1,0 +1,55 @@
+
+.jenkins__widget {
+  padding: 0.5em;
+  font-size: 1.6em;
+}
+
+.jenkins__job--name {
+  font-size: 1.5em !important;
+}
+
+.jenkins__job--build-number {
+  font-size: 0.8em !important;
+}
+
+.jenkins__job--time-elapsed {
+  font-size: 0.7em !important;
+}
+
+.jenkins__job-progress--container {
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.jenkins__job--status--success {
+  background-color: #4ec2b4;
+  height: 100%;
+}
+
+.jenkins__job--status--unknown {
+  background-color: #495b71;
+  height: 100%;
+}
+
+.jenkins__job--status--failure {
+  background-color: #de5029;
+  height: 100%;
+}
+
+.jenkins__job--status--unstable {
+  background-color: #d1be65;
+  height: 100%;
+}
+
+.jenkins__job--status-current {
+  z-index: -1;
+  padding: 0.5em;
+  padding-bottom: 4px;
+  font-size: 1.6em;
+  margin: auto;
+  background-image: url("../../assets/jenkins_bader.png");
+  background-repeat: no-repeat;
+  background-position: right; 
+  background-size: 100px 100px;  
+}
