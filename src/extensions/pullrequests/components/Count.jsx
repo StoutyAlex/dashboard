@@ -24,7 +24,6 @@ class Count extends React.Component {
 
   onApiData(data) {
     this.setState(data);
-    console.log(data);
   }
 
   render() {

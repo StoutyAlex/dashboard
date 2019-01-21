@@ -1,0 +1,32 @@
+.scaling-container {
+  padding: 0.3em;
+  height: 100%;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.scaling-half {
+  height: 64%;
+  display: block;
+  float: left;
+  width: 50%;
+}
+
+.scaling-progress-container {
+  width: 100%;
+  height: 36%;
+  display: block;
+  float: left;
+}
+
+.scaling-title {
+
+}
+
+.scaling-name {
+
+}
+
+.scaling-message {
+
+}

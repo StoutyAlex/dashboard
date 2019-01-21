@@ -75,8 +75,27 @@ const config = {
         columns: 2,
         rows: 1,
       },
-
-
+      {
+        type: 'aws.scaling',
+        name: 'int-silver-gateway-infrastructure-AutoScalingGroup-1UGKDTJ5U1CF2',
+        title: 'Gateway',
+        columns: 2,
+        rows: 1,
+      },
+      {
+        type: 'aws.scaling',
+        name: 'int-silver-gateway-infrastructure-AutoScalingGroup-1UGKDTJ5U1CF2',
+        title: 'UI',
+        columns: 2,
+        rows: 1,
+      },
+      {
+        type: 'aws.scaling',
+        name: 'int-silver-gateway-infrastructure-AutoScalingGroup-1UGKDTJ5U1CF2',
+        title: 'API',
+        columns: 2,
+        rows: 1,
+      },
 
 
       // {

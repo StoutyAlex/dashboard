@@ -1,6 +1,7 @@
 import express from 'express';
 import { apiRequest as jenkins } from '../src/extensions/jenkins/apiRequest';
 import { apiRequest as pullrequests } from '../src/extensions/pullrequests/apiRequest';
+import { apiRequest as aws } from '../src/extensions/aws/apiRequest';
 import ClientManager from './clientManager';
 import config from '../config';
 
@@ -44,6 +45,7 @@ wss.on('connection', (ws) => {
 
 clientManager.registerApi('jenkins', jenkins);
 clientManager.registerApi('pullrequests', pullrequests);
+clientManager.registerApi('aws', aws);
 
 
 

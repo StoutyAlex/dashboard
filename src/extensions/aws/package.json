@@ -1,0 +1,4 @@
+{
+  "name": "aws",
+  "main": "./components/index.js"
+}

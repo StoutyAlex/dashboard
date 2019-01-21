@@ -9,7 +9,7 @@ const apiRequest = () => {
 
   const fetchRepoPullRequests = async (repo) => {
     await request.get(`${baseUrl}${repo}/pulls`)
-    .set('Authorization', `token 320d042d640288eb4742b8a444c90aaf3bd6b693`)
+    .set('Authorization', `token 8a850ee68b24c843a1b749ba9cfcc5f1f690218c`)
     .then((res) => {
       appendPullRequest(repo, res.body.length);
     });
