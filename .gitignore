@@ -5,6 +5,7 @@ bower_component
 src/config/configSec.js
 
 .DS_STORE
+.env
 node_modules
 *~
 *.pyc

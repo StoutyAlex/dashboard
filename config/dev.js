@@ -1,9 +1,11 @@
+const env = require('dotenv').config().parsed;
 
 const config = {
 
-
   wsPort: 3001,
   useWssConnection: process.env.USE_WSS === 'true',
+
+  githubApiToken: (env ? env.REACT_APP_GITHUB_API_TOKEN : process.env.REACT_APP_GITHUB_API_TOKEN),
 
   apisPollInterval: 15000,
   
@@ -79,6 +81,7 @@ const config = {
         type: 'aws.scaling',
         name: 'int-silver-gateway-infrastructure-AutoScalingGroup-1UGKDTJ5U1CF2',
         title: 'Gateway',
+        displayType: 'bar',
         columns: 2,
         rows: 1,
       },
@@ -86,6 +89,7 @@ const config = {
         type: 'aws.scaling',
         name: 'int-silver-gateway-infrastructure-AutoScalingGroup-1UGKDTJ5U1CF2',
         title: 'UI',
+        displayType: 'bar',
         columns: 2,
         rows: 1,
       },
@@ -93,6 +97,7 @@ const config = {
         type: 'aws.scaling',
         name: 'int-silver-gateway-infrastructure-AutoScalingGroup-1UGKDTJ5U1CF2',
         title: 'API',
+        displayType: 'bar',
         columns: 2,
         rows: 1,
       },

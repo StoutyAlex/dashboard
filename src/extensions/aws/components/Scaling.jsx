@@ -4,17 +4,17 @@ import { ListenerMixin } from 'reflux';
 import ApiConsumer from '../../../mixin/apiMixin';
 import _ from 'lodash';
 import { ProgressBar } from 'react-bootstrap';
+import Gauge from '../../../components/mozaik/charts/Gauge';
 
 import '../../../styles/extensions/scaling.css'
-import { relative } from 'path';
 
 class Scaling extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: 3,
-      maxSize: 10,
-      minSize: 3,
+      current: 0,
+      maxSize: 0,
+      minSize: 0,
     }
   }
 
@@ -38,11 +38,19 @@ class Scaling extends Component {
   }
 
   render() {
-    const { thresholds, title } = this.props;
+    const { title } = this.props;
     const { current, minSize, maxSize } = this.state;
+    const totalPercent = (current / maxSize) * 100;
+
+    const thresholds = [
+      { threshold: 6,  color: '#85e985', message: 'Strong and Stable' },
+      { threshold: 8,  color: '#ecc265', message: 'Reaching Capacity' },
+      { threshold: 10, color: '#f26a3f', message: "Its gonna blow!" }
+    ]
 
     const cappedValue  = Math.min(current, _.max(thresholds.map(threshold => threshold.threshold)));
     let message = null;
+
 
     const normThresholds = thresholds.map(threshold => {
         if (message === null && cappedValue <= threshold.threshold) {
@@ -55,19 +63,64 @@ class Scaling extends Component {
         };
     });
 
+    const calculateSuccess = () => {
+      if ( totalPercent >= 60 )
+        return { percent: 60, remaining: 0 };
+      if ( totalPercent < 60 ) 
+        return {
+          percent: totalPercent,
+          remaining: (60 - totalPercent)
+        };
+    }
+
+    const calculateWarning = () => {
+      if ( totalPercent > 60 && totalPercent <= 90 )
+        return { percent: (totalPercent - 60), remaining: (30 - (totalPercent - 60)) };
+      if ( totalPercent > 90 )
+        return { percent: 30, remaining: 0 }
+      if ( totalPercent < 60 ) 
+        return { percent: 0, remaining: 30 }
+    }
+
+    const calculateProgress = () => {
+      const success = calculateSuccess();
+      const warning = calculateWarning();
+
+      return (
+        <ProgressBar style={{backgroundColor: '#2d4052'}}>
+          <ProgressBar striped bsStyle="success" now={success.percent} key={1} />
+          <ProgressBar striped bsStyle="success" now={success.remaining} key={'remainingProgressSuccess'} style={{opacity: '0.2'}}/>
+          <ProgressBar striped bsStyle="warning" now={warning.percent} key={2}/>
+          <ProgressBar striped bsStyle="warning" now={warning.remaining} key={'remainingProgressWarning'} style={{opacity: '0.2'}}/>
+          <ProgressBar  active bsStyle="danger" now={10} key={3} 
+            style={{opacity: (totalPercent === 100 ? '1' : '0.2')}} />
+        </ProgressBar>
+      );
+    };
+
     const progressContainer = () => (
       <div className="scaling-progress-container">
         <div style={{marginBottom: '8px'}}>
           {message}
         </div>
         {/* Make this work properly */}
-        <ProgressBar style={{backgroundColor: '#2d4052'}}>
-          <ProgressBar striped bsStyle="success" now={60} key={1} />
-          <ProgressBar striped bsStyle="warning" now={30} key={2} style={{opacity: "0.2"}}/>
-          <ProgressBar active bsStyle="danger" now={10} key={3} style={{opacity: "0.2"}}/>
-        </ProgressBar>
+        {calculateProgress()}
       </div>
-    )
+    );
+
+    const renderDisplay = () => {
+      if ( this.props.displayType === 'bar') {
+        console.log('Printing guage')
+        return (
+          <Gauge
+            donutRatio={0.65}
+            spacing={{ top: 45, right: 45, left: 45 }}
+            ranges={normThresholds}
+            value={current}
+          />
+        );
+      }
+    };
 
     return (
       <div className="scaling-container">
@@ -83,16 +136,16 @@ class Scaling extends Component {
         </span>
         <span>
           <div className="scaling-half" style={{textAlign: 'center'}}>
-            <div style={{ fontSize: '3.8em', color: 'rgba(255,255,255,0.5)'}}>
-                {current}/10
+            <div style={{ fontSize: '3.3em', color: 'rgba(255,255,255,0.5)'}}>
+                {current}/{maxSize}
             </div>
-            </div>
+          </div>
         </span>
         <span>
           {progressContainer()}
         </span>
       </div>
-  );
+    );
   }
 
 }
@@ -109,14 +162,6 @@ Scaling.defaultProps = {
     color:     PropTypes.string.isRequired,
     message:   PropTypes.string.isRequired
   })).isRequired
-};
-
-Scaling.defaultProps = {
-  thresholds: [
-      { threshold: 6,  color: '#85e985', message: 'Strong and Stable' },
-      { threshold: 8,  color: '#ecc265', message: 'Reaching Capacity' },
-      { threshold: 10, color: '#f26a3f', message: "Its gonna blow!" }
-  ]
 };
 
 export default Scaling;

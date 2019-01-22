@@ -1,5 +1,6 @@
 import HttpClient from '@bbc/http-client'
 import request from 'superagent-bluebird-promise';
+import config from '../../../config';
 
 const apiRequest = () => {
   const baseUrl = 'https://api.github.com/repos/';
@@ -7,9 +8,11 @@ const apiRequest = () => {
   let pullRequestObjects = [];
   let totalPullRequests = 0;
 
+  console.log(config.githubApiToken);
+
   const fetchRepoPullRequests = async (repo) => {
     await request.get(`${baseUrl}${repo}/pulls`)
-    .set('Authorization', `token 8a850ee68b24c843a1b749ba9cfcc5f1f690218c`)
+    .set('Authorization', `token ${config.githubApiToken}`)
     .then((res) => {
       appendPullRequest(repo, res.body.length);
     });
