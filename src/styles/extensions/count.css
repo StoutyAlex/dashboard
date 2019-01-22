@@ -50,6 +50,19 @@
   white-space: nowrap;
 }
 
+.pullrequests__count--happy {
+  background-color: #2d4052;
+}
+
+.pullrequests__count--getonit {
+  background-color: #d1be65;
+  color: #000;
+}
+
+.pullrequests__count--urgent {
+  background-color: #de5029;
+  color: #000;
+}
 
 .pullrequests__count--total {
   font-size: 4em;

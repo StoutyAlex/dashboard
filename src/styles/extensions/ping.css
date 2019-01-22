@@ -1,0 +1,37 @@
+.ping-container {
+  height: 100%;
+}
+
+.ping-half {
+  height: 100%;
+  display: block;
+  float: left;
+  width: 50%;
+  padding: 8px;
+}
+
+.ping--title {
+  font-size: 2em;
+}
+
+.ping--response-time {
+  position: absolute; 
+  bottom: 0;
+  margin-bottom: 8px;
+  font-size: 2em;
+}
+
+.ping--status-container {
+  font-size: 6em;
+  height: 100%;
+  text-align: center;
+  width: 100%; 
+}
+
+.ping--status-good {
+  color: #4ec2b4;
+}
+
+.ping--status-bad {
+  color: #de5029;
+}

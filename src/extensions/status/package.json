@@ -1,0 +1,4 @@
+{
+  "name": "status",
+  "main": "./components/index.js"
+}

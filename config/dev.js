@@ -16,6 +16,10 @@ const config = {
         cert: "/etc/pki/tls/certs/client.crt",
         certKey: "/etc/pki/tls/private/client.key",
     },
+    request: {
+      cert: "/etc/pki/tls/certs/client.crt",
+      certKey: "/etc/pki/tls/private/client.key"
+    },
   },
 
   // Dashboard is 4 x 5
@@ -63,10 +67,17 @@ const config = {
         columns: 2,
         rows: 6,
       },
+      // {
+      //   type: 'jenkins.job',
+      //   job: '/BBC/job/silver-ui-tests/job/master/',
+      //   jobName: "E2E",
+      //   columns: 2,
+      //   rows: 1,
+      // },
       {
         type: 'jenkins.job',
-        job: '/BBC/job/silver-ui-tests/job/master/',
-        jobName: "E2E",
+        job: '/BBC/job/silver-brave/job/master/',
+        jobName: "Brave",
         columns: 2,
         rows: 1,
       },
@@ -99,6 +110,20 @@ const config = {
         title: 'API',
         displayType: 'bar',
         columns: 2,
+        rows: 1,
+      },
+      {
+        type: 'status.ping',
+        url: 'https://live-streams-management.api.bbci.co.uk/api/status',
+        columns: 2,
+        title: 'LSM API',
+        rows: 1,
+      },
+      {
+        type: 'status.ping',
+        url: 'https://silver-manager.int.api.bbci.co.uk/api/sessions',
+        columns: 2,
+        title: 'Silver API',
         rows: 1,
       },
 
