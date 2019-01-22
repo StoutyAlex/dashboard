@@ -12,9 +12,9 @@ class Scaling extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: 0,
-      maxSize: 0,
-      minSize: 0,
+      current: 1,
+      maxSize: 2,
+      minSize: 1,
     }
   }
 
@@ -107,20 +107,6 @@ class Scaling extends Component {
         {calculateProgress()}
       </div>
     );
-
-    const renderDisplay = () => {
-      if ( this.props.displayType === 'bar') {
-        console.log('Printing guage')
-        return (
-          <Gauge
-            donutRatio={0.65}
-            spacing={{ top: 45, right: 45, left: 45 }}
-            ranges={normThresholds}
-            value={current}
-          />
-        );
-      }
-    };
 
     return (
       <div className="scaling-container">
