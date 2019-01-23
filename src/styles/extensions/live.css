@@ -1,0 +1,19 @@
+
+.session-item--container {
+  border: 3px solid #2d4052;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+}
+
+.session-item-stauts--green {
+  color: #4ec2b4;
+}
+
+.session-item-stauts--amber {
+  color: #d1be65;
+}
+
+.session-item-stauts--red {
+  color: #de5029;
+}
