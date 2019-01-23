@@ -1,11 +1,10 @@
 import React from 'react';
 
 const PRCell = ({ count, name, max }) => {
-  // change class name
-
+  // let user set custom ranges
   const prCellColor = () => {
-    if (count == 1) return 'pullrequests__count--getonit';
-    if (count >= 2) return 'pullrequests__count--urgent';
+    if (count == 2) return 'pullrequests__count--getonit';
+    if (count >= 3) return 'pullrequests__count--urgent';
     return "pullrequests__count--happy"
   };
 
