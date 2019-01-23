@@ -2,7 +2,7 @@ const env = require('dotenv').config().parsed;
 
 const config = {
 
-  wsPort: 3001,
+  wsPort: 3002,
   useWssConnection: process.env.USE_WSS === 'true',
 
   githubApiToken: (env ? env.REACT_APP_GITHUB_API_TOKEN : process.env.REACT_APP_GITHUB_API_TOKEN),
@@ -28,9 +28,8 @@ const config = {
   dashboard: {
     widgets: [
       {
-        type: 'jenkins.job',
-        job: '/BBC/job/silver-ui-tests/job/master/',
-        jobName: "API",
+        type: 'environment.display',
+        environment: 'DEV',
         columns: 2,
         rows: 2,
       },
@@ -61,9 +60,8 @@ const config = {
         rows: 2,
       },
       {
-        type: 'jenkins.job',
-        job: '/BBC/job/silver-ui-tests/job/master/',
-        jobName: "Client",
+        type: 'live.list',
+        url: 'http://localhost:3000/api/sessions/live',
         columns: 2,
         rows: 6,
       },
