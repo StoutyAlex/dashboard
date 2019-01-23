@@ -3,6 +3,7 @@ import { apiRequest as jenkins } from '../src/extensions/jenkins/apiRequest';
 import { apiRequest as pullrequests } from '../src/extensions/pullrequests/apiRequest';
 import { apiRequest as aws } from '../src/extensions/aws/apiRequest';
 import { apiRequest as status } from '../src/extensions/status/apiRequest';
+import { apiRequest as live } from '../src/extensions/live/apiRequest';
 import ClientManager from './clientManager';
 import config from '../config';
 import { stat } from 'fs';
@@ -20,7 +21,7 @@ app.use(function (req, res, next) {
     }
 });
 
-const server = app.listen(3001, function () {
+const server = app.listen(3002, function () {
     console.log('Data being served from http://localhost:3001');
 });
 
@@ -49,4 +50,4 @@ clientManager.registerApi('jenkins', jenkins);
 clientManager.registerApi('pullrequests', pullrequests);
 clientManager.registerApi('aws', aws);
 clientManager.registerApi('status', status);
-
+clientManager.registerApi('live', live);

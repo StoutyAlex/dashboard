@@ -7,6 +7,8 @@ import jenkins from './extensions/jenkins';
 import pullrequests from './extensions/pullrequests';
 import aws from './extensions/aws';
 import status from './extensions/status';
+import environment from './extensions/environment';
+import live from './extensions/live';
 
 import './index.css';
 
@@ -17,6 +19,8 @@ registry.addExtensions({
   jenkins,
   pullrequests,
   status,
+  environment,
+  live,
 });
 
 ReactDOM.render(<App registry={registry} />, document.getElementById('root'));
