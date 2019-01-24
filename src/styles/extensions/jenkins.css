@@ -42,14 +42,32 @@
   height: 100%;
 }
 
-.jenkins__job--status-current {
-  z-index: -1;
+.jenkins__job--status-container {
+  height: 70%;
   padding: 0.5em;
-  padding-bottom: 4px;
-  font-size: 1.6em;
-  margin: auto;
-  background-image: url("../../assets/jenkins_bader.png");
-  background-repeat: no-repeat;
-  background-position: right; 
-  background-size: 100px 100px;  
+}
+
+.jenkins__job--status-progress--background {
+  background-color: rgba(255,255,255,0.5);
+}
+
+.jenkins__job--status-progress {
+  height: 30%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.jenkins__job--status-image {
+  width: 30%;
+  height: 100%;
+  display: block;
+  float: left;
+}
+
+.jenkins__job--status-current {
+  width: 70%;
+  height: 100%;
+  display: block;
+  float: left;
+  font-size: 1.8em; 
 }

@@ -3,8 +3,11 @@ import reactMixin from 'react-mixin';
 import { ListenerMixin } from 'reflux';
 import ApiConsumer from '../../../mixin/apiMixin';
 import moment from 'moment';
+import { ProgressBar } from 'react-bootstrap';
 
 import '../../../styles/extensions/jenkins.css';
+
+import image from '../../../assets/jenkins_bader.png';
 
 const JENKINS_BUILD_STATUS_BUILDING = 'BUILDING';
 const JENKINS_BUILD_STATUS_UNKNOWN  = 'UNKNOWN';
@@ -45,35 +48,40 @@ class Job extends Component {
     const progress = currentBuild.building ?
       ((Date.now() - currentBuild.timestamp) / currentBuild.estimatedDuration) * 100 : 100;
 
-    const progressStyle = {
-        border:          '1px solid #fff',
-        width:           `${progress}%`,
-    };
-
     const jobStatus = () => (currentBuild.building ? previousStatus : currentStatus).toLowerCase();
 
     return (
       <div className={`jenkins__job--status--${jobStatus()}`}>
-        <div className="jenkins__job--status-current">
-          <div className="jenkins__job--build-number">
-          Build #{currentBuild.number}<br />
-            <div className="jenkins__job--name">
-              {jobName}&nbsp;<br />
-            </div>
-          </div>
-          <div>
-          <time className="jenkins__job--time-elapsed">
-              <i className="fa fa-clock-o"/>&nbsp;
-              {moment(currentBuild.timestamp, 'x').fromNow()}
-          </time>
-          </div>
-
-          <div className="jenkins__job-progress--container">
+        <div className="jenkins__job--status-container">
           <span>
-              {progress < 100 && `${Math.round(progress)}%`}
+            <div className="jenkins__job--status-current">
+              <div className="jenkins__job--build-number">
+                Build #{currentBuild.number}<br />
+                <div className="jenkins__job--name">
+                  {jobName}&nbsp;<br />
+                </div>
+              </div>
+              <div>
+                <time className="jenkins__job--time-elapsed">
+                  <i className="fa fa-clock-o"/>&nbsp;
+                  {moment(currentBuild.timestamp, 'x').fromNow()}
+                </time>
+              </div>
+            </div>
           </span>
-          {progress < 100 && <div className="jenkins__job-status__current__progress-bar" style={progressStyle}/>}
-          </div>
+          <span>
+            <div className="jenkins__job--status-image">
+              <img src={image} height='90px'></img>
+            </div>
+          </span>
+        </div>
+        <div className="jenkins__job--status-progress">
+          { progress < 100 && 
+            <div>
+              &nbsp;
+              <ProgressBar striped bsStyle="success" now={progress} key={1} className="jenkins__job--status-progress--background" />
+            </div>
+          }
         </div>
       </div>
     );
