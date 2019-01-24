@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 
-// Import widgets being used in this component
-import NumberWidgetContainer from '../components/NumberWidgetContainer';
-import ListWidgetContainer from '../components/ListWidgetContainer';
-import GraphWidgetContainer from '../components/GraphWidgetContainer';
 import Widget from './Widget';
 import config from '../../config';
 import _ from 'lodash';

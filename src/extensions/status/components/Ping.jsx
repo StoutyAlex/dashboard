@@ -68,7 +68,7 @@ reactMixin(Ping.prototype, ApiConsumer);
 Ping.displayName = 'ping';
 
 Ping.propTypes = {
-
+  url: PropTypes.string.isRequired,
 };
 
 export default Ping;

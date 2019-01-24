@@ -42,7 +42,8 @@ class Count extends React.Component {
     const repoCells = pullRequestObjects.map((pullRequest, index) => {
       if (currentCells !== maxCells) {
         currentCells++;
-        return <PRCell 
+        return <PRCell
+          key={pullRequest.repoName}
           name={pullRequest.repoName}
           count={pullRequest.pullRequests}
           max={maxCells} />

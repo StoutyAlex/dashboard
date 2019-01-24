@@ -1,0 +1,4 @@
+{
+  "name": "spacer",
+  "main": "./components/index.js"
+}

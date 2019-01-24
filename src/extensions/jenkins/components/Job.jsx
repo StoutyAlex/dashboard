@@ -19,7 +19,7 @@ class Job extends Component {
   }
 
   getApiRequest() {
-    const { job, title } = this.props;
+    const { job } = this.props;
     return {
       id: `jenkins.job.${job}`,
       params: { job }
@@ -71,7 +71,7 @@ class Job extends Component {
           </span>
           <span>
             <div className="jenkins__job--status-image">
-              <img src={image} height='90px'></img>
+              <img src={image} height='90px' alt="badger"></img>
             </div>
           </span>
         </div>

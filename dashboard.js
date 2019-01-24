@@ -3,7 +3,8 @@ require('babel-register')({
       // /node_modules\/mozaik[^/]*\/src/,
       /src\/extensions\/[^/]*/,
       /server\/[^/]*/,
+      /server.js/,
   ]
 });
 
-require('./server/index');
+require('./src/server');

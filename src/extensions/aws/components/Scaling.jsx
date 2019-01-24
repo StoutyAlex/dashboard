@@ -4,7 +4,7 @@ import { ListenerMixin } from 'reflux';
 import ApiConsumer from '../../../mixin/apiMixin';
 import _ from 'lodash';
 import { ProgressBar } from 'react-bootstrap';
-import Gauge from '../../../components/mozaik/charts/Gauge';
+// import Gauge from '../../../components/mozaik/charts/Gauge';
 
 import '../../../styles/extensions/scaling.css'
 
@@ -39,7 +39,7 @@ class Scaling extends Component {
 
   render() {
     const { title } = this.props;
-    const { current, minSize, maxSize } = this.state;
+    const { current, maxSize } = this.state;
     const totalPercent = (current / maxSize) * 100;
 
     const thresholds = [
@@ -52,7 +52,7 @@ class Scaling extends Component {
     let message = null;
 
 
-    const normThresholds = thresholds.map(threshold => {
+    thresholds.map(threshold => {
         if (message === null && cappedValue <= threshold.threshold) {
             message = threshold.message;
         }

@@ -83,7 +83,6 @@ const ApiStore = Reflux.createStore({
   initWs(config) {
       // only connect ws if it's not already connected, when connection is lost and we succeed in re-establishing it
       // we reload configuration, so without this check we'll end in an infinite loop.
-      console.log(config);
       if (ws === null) {
           connectWS(config, this);
       }
@@ -92,7 +91,6 @@ const ApiStore = Reflux.createStore({
   },
 
   fetch(id, params = {}) {
-      console.log(id);
       const request = { id, params };
 
       // keep track to use when re-connecting

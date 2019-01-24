@@ -64,7 +64,7 @@ const config = {
       },
       {
         type: 'live.list',
-        url: 'http://localhost:3000/api/sessions/live',
+        url: 'https://silver-manager.int.api.bbci.co.uk/api/sessions/live',
         columns: 2,
         rows: 6,
       },

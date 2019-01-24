@@ -23,7 +23,8 @@ const Session = ({ sessionId, sessionTitle, status }) => {
 Session.displayName = "session";
 
 Session.propTypes = {
-  name: PropTypes.string.isRequired,
+  sessionId: PropTypes.number.isRequired,
+  sessionTitle: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
 }
 

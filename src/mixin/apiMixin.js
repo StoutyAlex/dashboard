@@ -26,7 +26,6 @@ const ApiConsumerMixin = {
     },
 
     componentDidMount() {
-        console.log(!this.apiRequest || !this.apiRequest.id);
         if (!this.apiRequest || !this.apiRequest.id) {
             return;
         }
